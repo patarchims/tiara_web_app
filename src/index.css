@@ -1,0 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+
+  html {
+    font-family: 'Poppins', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .max-width {
+    @apply max-w-[1440px] mx-auto;
+  }
+}
+
+/* Hide scrollbar in Webkit browsers */
+::-webkit-scrollbar {
+  height: 0; /* This sets horizontal scrollbar height to 0 */
+  width: 0;
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: none; /* Removes scrollbar */
+}
+
+@media print {
+  body {
+    visibility: hidden;
+  }
+
+  .section-to-print {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
