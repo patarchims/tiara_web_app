@@ -8,6 +8,7 @@ import an6 from './asesmen_nyeri/6.png'
 import keterangan from './keterangan.png'
 import logo from './logo.png'
 import man from './man_pasien.png'
+import skalaNyeri from './skala-nyeri.png'
 import woman from './woman_pasien.png'
 
 export const images = {
@@ -24,4 +25,5 @@ export const images = {
   },
   man: man,
   woman: woman,
+  skalaNyeri: skalaNyeri,
 }

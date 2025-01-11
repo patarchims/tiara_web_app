@@ -1,11 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import OperationReport from '@/features/laporan-operasi/components/operation-report'
+import Triase from '@/features/pasien/triase'
 
 export const Route = createFileRoute('/view')({
   component: Render,
 })
 
 function Render() {
-  return <OperationReport />
+  return <Triase />
 }

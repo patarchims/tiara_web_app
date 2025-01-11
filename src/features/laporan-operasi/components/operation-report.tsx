@@ -8,7 +8,7 @@ import { getLaporOperasi } from '@/services/laporan-operasi'
 import { useOperasiStore } from '@/store/operasi'
 import { LaporanOperasi } from '@/type'
 
-import Checkbox from './checkbox'
+import Checkbox from '../../../components/checkbox'
 import DiagnosaWrapper from './diagnosa-wrapper'
 import Item from './item'
 import ItemCheckbox from './item-checkbox'
@@ -159,7 +159,7 @@ const OperationReport = ({ isReport, noreg = '' }: OperationReportProps) => {
                 <Checkbox title={i.nama} isChecked={i.is_active} key={i.nama} />
               ))}
             </ItemCheckbox>
-            <ItemCheckbox title='Klasifikasi'>
+            <ItemCheckbox title='Klasifikasi Luka'>
               {data?.klasifikasi_luka.map((i) => (
                 <Checkbox title={i.nama} isChecked={i.is_active} key={i.nama} />
               ))}

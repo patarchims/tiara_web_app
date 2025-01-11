@@ -3,6 +3,16 @@ import QRCode from 'react-qr-code'
 
 import { cn } from '@/lib/utils'
 
+interface SimpleColumnProps {
+  name?: string
+  isLast?: boolean
+  head?: boolean
+  className?: string
+  className2?: string
+  hasQR?: boolean
+  isChild?: ReactNode
+}
+
 export function SimpleColumn({
   name,
   head,
@@ -11,15 +21,7 @@ export function SimpleColumn({
   className2 = '',
   hasQR = false,
   isChild,
-}: {
-  name?: string
-  isLast?: boolean
-  head?: boolean
-  className?: string
-  className2?: string
-  hasQR?: boolean
-  isChild?: ReactNode
-}) {
+}: SimpleColumnProps) {
   if (isChild)
     return (
       <div

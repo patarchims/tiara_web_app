@@ -5,6 +5,9 @@ export type DialogId =
   | 'dialog-update-cppt-soap'
   | 'dialog-update-cppt-sbar'
   | 'dialog-update-edukasi-terintegrasi'
+  | 'dialog-edit-diagnosa-asesmen-awal-igd'
+  | 'dialog-edit-vital-sign-asesmen-awal-igd'
+  | 'dialog-edit-pemeriksaan-fisik-asesmen-awal-igd'
   | ''
 
 export interface Meta {
@@ -62,15 +65,8 @@ export interface Cppt {
   pemberi_asuhan: string
 }
 
-export interface ProfilePasien {
-  tgl_lahir: string
-  jenis_kelamin: string
-  nama: string
-  ruangan: string
-  no_reg: string
-}
 export interface CpptByNoreg {
-  profil_pasien: ProfilePasien
+  profil_pasien: ProfilPasien
   cppt: Cppt[]
 }
 
@@ -120,6 +116,8 @@ export interface RegisterPasien {
   nama: string
   kunjungan: string
   keterangan: string
+  pelayanan: string
+  bagian: string
 }
 
 export interface RingkasanPerawatanPasienPulang {
@@ -255,6 +253,7 @@ export interface AsesmenDokterIgd {
   radiologi: Radiologi[]
   planning: InstruksiPengantarRawatInap[]
   diagnosa: Diagnosa[]
+  profil_pasien: ProfilPasien
 }
 
 export interface PemeriksaanFisikAsesmenDokterIgd {
@@ -295,6 +294,7 @@ export interface Triase {
   no_rm: string
   tgl_masuk: string
   jam_pemeriksaan: string
+  jam_kedatangan: string
   alasan_datang: string
   penyebab_cedera: string
   keluhan_utama: string
@@ -320,6 +320,8 @@ export interface Triase {
   skor_nyeri: number
   petugas_triase: string
   gambar_nyeri: GambarNyeri[]
+  ruangan: string
+  skala_triase: string
 }
 
 export interface GambarNyeri {
@@ -392,10 +394,12 @@ export interface JenisOperasi {
 }
 
 export interface ProfilPasien {
-  nama: string
   tgl_lahir: string
-  no_rm: string
   jenis_kelamin: string
+  nama: string
+  ruangan: string
+  no_reg: string
+  no_rm?: string
 }
 
 export interface TindakanOperasi {

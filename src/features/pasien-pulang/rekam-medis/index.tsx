@@ -207,7 +207,8 @@ export default function RekamMedis() {
                         {pasienRegister != null &&
                           pasienRegister.response.map((item, index) => (
                             <SelectItem key={index} value={item.noreg}>
-                              {item.tanggal} - {item.noreg}
+                              {item.tanggal} - {item.noreg} - {item.pelayanan} -{' '}
+                              {item.bagian}
                             </SelectItem>
                           ))}
                       </SelectGroup>

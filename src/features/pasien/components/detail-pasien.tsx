@@ -147,8 +147,8 @@ export function DetailPasien() {
         open={showDialog}
         onOpenChange={() => {
           setShowDialog(!showDialog)
-          if (dialogId != 'dialog-detail-pasien') {
-            setDialogId('dialog-detail-pasien')
+          if (dialogId != 'dialog-rekam-medis') {
+            setDialogId('dialog-rekam-medis')
           } else {
             setDialogId('')
           }

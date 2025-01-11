@@ -28,10 +28,10 @@ export function useLogin() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      // email: 'tabitagultom@gmail.com',
-      // password: '12345',
-      email: '',
-      password: '',
+      email: 'tabitagultom@gmail.com',
+      password: '12345',
+      // email: '',
+      // password: '',
     },
   })
 
