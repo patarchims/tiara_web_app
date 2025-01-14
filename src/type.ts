@@ -333,7 +333,7 @@ export interface LembarKonsul {
   profil_pasien: ProfilPasien
   lembar_konsul: {
     nama_pasien: string
-    tgal_lahir: string
+    tanggal_lahir: string
     no_rm: string
     noreg: string
     ruangan: string
@@ -344,8 +344,18 @@ export interface LembarKonsul {
     mohon_konsul_pasien: string
     umur_pasien: string
     iktisar_klinik: string
-    diagnosa_kerja: string
-  }
+    diagnosa_kerja: Diagnosa[]
+  },
+  jawaban_konsul: JawabanKonsul
+}
+
+
+export interface JawabanKonsul {
+  tanggal: string,
+  penemuan: string,
+  diagnosa: string,
+  terapi: string,
+  anjuran: string
 }
 
 export interface PasienPulang {

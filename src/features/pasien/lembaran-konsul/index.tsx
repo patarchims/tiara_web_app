@@ -7,6 +7,9 @@ import Loading from '@/components/loading'
 import Text from '@/components/text'
 import { getLembarKonsul } from '@/services/lembar-konsul'
 import { constants } from '@/utils/constants'
+import { TextTitle } from '@/features/pasien-pulang/rekam-medis/components/text-title'
+import { DiagnosaKerja } from './components/diagnosa-kerja'
+import QRCode from 'react-qr-code'
 
 interface LembaranKonsulProps {
   isReport?: boolean
@@ -51,7 +54,7 @@ export default function LembaranKonsul({
                 </div>
                 <div className='flex items-center justify-start gap-4'>
                   <p className='w-[180px]'>Tanggal Lahir</p>
-                  <p>: {res?.lembar_konsul?.tgal_lahir}</p>
+                  <p>: {res?.lembar_konsul?.tanggal_lahir}</p>
                 </div>
                 <div className='flex items-center justify-start gap-4'>
                   <p className='w-[180px]'>Nomor Rekam Medis</p>
@@ -93,8 +96,8 @@ export default function LembaranKonsul({
 
         {/* Dokter Yang Meminta Konsul */}
         <div className='border border-black p-2 mb-1'>
-          <Text k='Dokter Yang Meminta Konsul' v='-' />
-          <Text k='Tanggal' v='-' />
+          <Text k='Dokter Yang Meminta Konsul' v={res?.lembar_konsul.dokter_meminta_konsul} />
+          <Text k='Tanggal' v={res?.lembar_konsul.tanggal_konsul} />
           <p className='my-1'>Yth, T.S.DR/Konsultan </p>
           <div className='flex items-center gap-4'>
             <p>
@@ -105,12 +108,19 @@ export default function LembaranKonsul({
           </div>
           <p>yang kami rawat dengan,</p>
           <Text k='Iktisar klinik' v={res?.lembar_konsul?.iktisar_klinik} />
-          <Text k='Diagnosa Kerja' v={res?.lembar_konsul?.diagnosa_kerja} />
+
+
+          <div className='flex items-center justify-between'>
+            <TextTitle title='Diagnosa Kerja' />
+
+          </div>
+          <DiagnosaKerja data={res != null ? res.lembar_konsul.diagnosa_kerja : []} />
         </div>
         {/* Dokter */}
         {res != null && res.lembar_konsul?.dokter_meminta_konsul != '' && (
           <div className='p-2 mb-1 m-2 flex justify-end'>
-            <div className='text-center '>
+            <div className='text-center text-center  flex flex-col gap-4 items-center text-center text-xs'>
+              <QRCode value={res?.lembar_konsul?.dokter_meminta_konsul!} className='h-[50px] w-[50px]' />
               <p>({res?.lembar_konsul?.dokter_meminta_konsul})</p>
             </div>
           </div>
@@ -121,11 +131,11 @@ export default function LembaranKonsul({
         {/* Jawaban */}
         <div className='border border-black p-2 mb-1'>
           <p className='font-semibold text-center'>Jawaban</p>
-          <Text k='Tanggal' v='-' />
-          <Text k='Penemuan' v='-' />
-          <Text k='Diagnosa' v='-' />
-          <Text k='Terapi' v='-' />
-          <Text k='Anjuran' v='-' />
+          <Text k='Tanggal' v={res?.jawaban_konsul.tanggal} />
+          <Text k='Penemuan' v={res?.jawaban_konsul.penemuan} />
+          <Text k='Diagnosa' v={res?.jawaban_konsul.diagnosa} />
+          <Text k='Terapi' v={res?.jawaban_konsul.terapi} />
+          <Text k='Anjuran' v={res?.jawaban_konsul.anjuran} />
         </div>
         {/* Jawaban */}
       </div>
@@ -134,7 +144,10 @@ export default function LembaranKonsul({
       {/* Dokter */}
       {res != null && res?.lembar_konsul?.dokter != '' && (
         <div className='p-2 mb-1 m-2 flex justify-end'>
-          <div className='text-center '>
+          <div className='text-center  flex flex-col gap-4 items-center text-center text-xs'>
+
+
+            <QRCode value={res?.lembar_konsul?.dokter!} className='h-[50px] w-[50px]' />
             <p>({res?.lembar_konsul?.dokter})</p>
           </div>
         </div>

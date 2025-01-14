@@ -6,13 +6,13 @@ import an4 from './asesmen_nyeri/4.png'
 import an5 from './asesmen_nyeri/5.png'
 import an6 from './asesmen_nyeri/6.png'
 import keterangan from './keterangan.png'
-import logo from './logo.png'
+import logoRsHarapan from './logo_small_rs_harapan.png'
 import man from './man_pasien.png'
 import skalaNyeri from './skala-nyeri.png'
 import woman from './woman_pasien.png'
 
 export const images = {
-  logo: logo,
+  logo: logoRsHarapan,
   anatomiTubuh: anatomiTubuh,
   keterangan: keterangan,
   asesmenNyeri: {
