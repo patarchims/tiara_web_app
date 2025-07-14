@@ -15,6 +15,28 @@ export interface Meta {
   code: number
 }
 
+
+export interface AsesmenDokterRanap {
+  dokter: string
+  tanggal: string
+  prognosis: string
+  image_lokalis: string
+  keluhan_utama: string
+  penyakit_sekarang: string
+  penyakit_keluarga: string
+  penyakit_dahulu: string
+  pemeriksaan_fisik: PemeriksaanFisikAsesmenDokterIgd
+  vital_sign: VitalSign
+  labor: Labor[]
+  radiologi: Radiologi[]
+  planning: InstruksiPengantarRawatInap[]
+  diagnosa: Diagnosa[]
+  profil_pasien: ProfilPasien
+  konsul_ke: string
+  terapi: string
+}
+
+
 export interface Response<T> {
   metadata: Meta
   response: T
@@ -107,6 +129,64 @@ export interface RekamMedisLink {
   nama_rm: string
   kode_rm: string
   link_url: string
+}
+
+export interface Keperawatan {
+  intervensi: PelaksanaanKeperawatan[]
+  pasien: Partial<Pasien> & {
+    alamat: string
+    no_hp: string
+    tgl_lahir: string
+  }
+}
+
+export interface PelaksanaanKeperawatan {
+  insert_dttm: string
+  insert_pc: string
+  noreg: string
+  person: string
+  nama_perawat: string
+  no_daskep: string
+  kode_sdki: string
+  no_rm: string
+  siki: Siki[]
+  tindakan: Tindakan[]
+}
+
+
+export interface Siki {
+  insert_dttm: string
+  no_daskep: string
+  id_siki: number
+  kode_siki: string
+  nama_siki: string
+  kategori: string
+  no_urut: number
+}
+
+export interface Tindakan {
+  id: number
+  insert_dttm: string
+  no_daskep: string
+  user_id: string
+  kd_bagian: string
+  deskripsi: string
+  perawat: Partial<Perawat>
+  bagian: Partial<Bagian>
+}
+
+
+export interface Bagian {
+  Bagian: string
+  Pelayanan: string
+}
+
+export interface Perawat {
+  id_perawat: string
+  nama: string
+  alamat: string
+  jenis_kelamin: string
+  status: string
 }
 
 export interface RegisterPasien {
@@ -370,7 +450,7 @@ export interface LaporanOperasi {
   profil_pasien: ProfilPasien
   ahli_bedah: AhliAnastesi[]
   asisten: Asisten[]
-  istrumen: any[]
+  istrumen: unknown[]
   ahli_anastesi: AhliAnastesi[]
   perawat_anastesi: AhliAnastesi[]
   tanggal_operasi: string
