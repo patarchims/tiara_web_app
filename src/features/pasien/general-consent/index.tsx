@@ -154,7 +154,7 @@ export default function GeneralConsent({
           <p className='ml-8 mb-2'>
             Saya memahami informasi yang ada dalam diri saya, termaksud
             Diagnosis, Hasil laboratorium, dan hasil tes diagnostic yang akan
-            digunakan untuk keperawatan medis, Rumah Sakit Harapan akan menjamin
+            digunakan untuk keperawatan medis, Rumah Sakit Tiara akan menjamin
             kerahasiannya.
           </p>
           <p className='ml-8 mb-2'>
@@ -230,7 +230,7 @@ export default function GeneralConsent({
           <p className='ml-8 mb-2'>
             Saya memahami tentang informasi biaya pengobatan atau biaya tindakan
             dan biaya pemeriksaan diagnostic yang dijelaskan oleh petugas RS
-            Harapan
+            Tiara
           </p>
         </div>
         {/* VI */}
