@@ -1,8 +1,9 @@
-import { sentryVitePlugin } from '@sentry/vite-plugin'
 import path from 'path'
-import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+
+import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [
@@ -10,7 +11,7 @@ export default defineConfig({
     react(),
     sentryVitePlugin({
       org: 'vincent-core',
-      project: 'rme-harapan',
+      project: 'rme-tiara',
     }),
   ],
 
