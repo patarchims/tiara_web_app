@@ -2,7 +2,6 @@ import { z } from 'zod'
 
 import { AxiosError } from 'axios'
 import { useForm } from 'react-hook-form'
-import { match } from 'ts-pattern'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
@@ -66,34 +65,14 @@ export function useSbar() {
 
   //mapping for default value input
   const tempItem = (item as Cppt) ?? null
-  const cppt = tempItem != null ? tempItem.cppt.trim().split('\n') : ''
-  let situation, background, asesmen, rekomendation
-
-  for (let i = 0; i < cppt.length; i++) {
-    const temp = cppt[i]
-    const [key, value] = temp.split(':').map((str) => str.trim())
-    match(key)
-      .with('Situation', () => {
-        situation = value
-      })
-      .with('Background', () => {
-        background = value
-      })
-      .with('Asesmen', () => {
-        asesmen = value
-      })
-      .with('Rekomendation', () => {
-        rekomendation = value
-      })
-  }
 
   const formUpdateSbar = useForm<z.infer<typeof formUpdateSchema>>({
     resolver: zodResolver(formUpdateSchema),
     defaultValues: {
-      situation: situation,
-      background: background,
-      asesmen: asesmen,
-      recomendation: rekomendation,
+      situation: tempItem.situation,
+      background: tempItem.background,
+      asesmen: tempItem.asesmen,
+      recomendation: tempItem.recommendation,
       instruksi_ppa: tempItem?.instruksi_ppa ?? '',
       id: tempItem?.id ?? -1,
     },

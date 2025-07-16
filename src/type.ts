@@ -81,10 +81,16 @@ export interface Pasien {
 export interface Cppt {
   id: number
   tanggal: string
-  cppt: string
   instruksi_ppa: string
   dpjp: string
   pemberi_asuhan: string
+  subjektif: string
+  situation: string
+  background: string
+  objektif: string
+  asesmen: string
+  plan: string
+  recommendation: string
 }
 
 export interface CpptByNoreg {
@@ -100,6 +106,20 @@ export interface EdukasiTerintegrasi {
   pemberi_informasi: string
   penerima_informasi: string
   evaluasi: string
+}
+
+
+export interface PelaksanaanKeperawatan {
+  insert_dttm: string
+  insert_pc: string
+  noreg: string
+  person: string
+  nama_perawat: string
+  no_daskep: string
+  kode_sdki: string
+  no_rm: string
+  siki: Siki[]
+  tindakan: Tindakan[]
 }
 
 export interface PemberiInformasi {
@@ -334,6 +354,10 @@ export interface AsesmenDokterIgd {
   planning: InstruksiPengantarRawatInap[]
   diagnosa: Diagnosa[]
   profil_pasien: ProfilPasien
+  konsul_ke: string
+  terapi: string
+  cara_keluar: string
+  cara_keluar_detail: string
 }
 
 export interface PemeriksaanFisikAsesmenDokterIgd {
@@ -396,6 +420,8 @@ export interface Triase {
   pernafasan: string
   sirkulasi: string
   kesadaran: string
+  status_lendir: string
+  his: string
   nyeri: string
   skor_nyeri: number
   petugas_triase: string
@@ -450,7 +476,7 @@ export interface LaporanOperasi {
   profil_pasien: ProfilPasien
   ahli_bedah: AhliAnastesi[]
   asisten: Asisten[]
-  istrumen: unknown[]
+  istrumen: Asisten[]
   ahli_anastesi: AhliAnastesi[]
   perawat_anastesi: AhliAnastesi[]
   tanggal_operasi: string

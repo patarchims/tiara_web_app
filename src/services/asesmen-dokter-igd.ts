@@ -12,4 +12,14 @@ const getAsesmenDokterIgd = async ({
   return response.data
 }
 
-export { getAsesmenDokterIgd }
+const getAsesmenDokterPonek = async ({
+  noreg,
+}: {
+  noreg: string
+}): Promise<Response<AsesmenDokterIgd>> => {
+  const response = await get(`/v1/asesmen-dokter-ponek/${noreg}`)
+
+  return response.data
+}
+
+export { getAsesmenDokterIgd, getAsesmenDokterPonek }

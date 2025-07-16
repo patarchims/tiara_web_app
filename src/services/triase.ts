@@ -12,4 +12,14 @@ const getTriase = async ({
   return response.data
 }
 
-export { getTriase }
+const getTriasePonek = async ({
+  noreg,
+}: {
+  noreg: string
+}): Promise<Response<Triase>> => {
+  const response = await get(`/v1/report-triase-ponek/${noreg}`)
+
+  return response.data
+}
+
+export { getTriase, getTriasePonek }

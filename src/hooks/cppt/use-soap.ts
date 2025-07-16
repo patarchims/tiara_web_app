@@ -2,7 +2,6 @@ import { z } from 'zod'
 
 import { AxiosError } from 'axios'
 import { useForm } from 'react-hook-form'
-import { match } from 'ts-pattern'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
@@ -65,36 +64,16 @@ export function useSoap() {
   })
 
   const tempItem = item as Cppt
-  const cppt = tempItem != null ? tempItem.cppt.trim().split('\n') : ''
-  let subjektif, objective, asesmen, plan
-
-  for (let i = 0; i < cppt.length; i++) {
-    const temp = cppt[i]
-    const [key, value] = temp.split(':').map((str) => str.trim())
-    match(key)
-      .with('Subjektif', () => {
-        subjektif = value
-      })
-      .with('Objective', () => {
-        objective = value
-      })
-      .with('Asesmen', () => {
-        asesmen = value
-      })
-      .with('Plan', () => {
-        plan = value
-      })
-  }
 
   const formUpdateSoap = useForm<UpdateCpptSoapReq>({
     resolver: zodResolver(formUpdateSchema),
     defaultValues: {
-      subjektif: subjektif,
-      asesmen: asesmen,
+      subjektif: tempItem.subjektif,
+      asesmen: tempItem.asesmen,
       id: tempItem?.id ?? -1,
       instruksi_ppa: tempItem?.instruksi_ppa ?? '',
-      objektif: objective,
-      plan: plan,
+      objektif: tempItem.objektif,
+      plan: tempItem.plan,
     },
   })
 

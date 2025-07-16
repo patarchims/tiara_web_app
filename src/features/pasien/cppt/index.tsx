@@ -88,7 +88,25 @@ export function CPPT({ isReport = false, no_rm = '' }: CPPTProps) {
                   className='flex-[0.5]'
                 />
                 <SimpleColumn
-                  name={item.cppt}
+                  isChild={
+                    <>
+                      {item.situation != '' ? (
+                        <>
+                          <Item k='S' value={item.situation} />
+                          <Item k='B' value={item.background} />
+                          <Item k='A' value={item.asesmen} />
+                          <Item k='R' value={item.recommendation} />
+                        </>
+                      ) : (
+                        <>
+                          <Item k='S' value={item.subjektif} />
+                          <Item k='O' value={item.objektif} />
+                          <Item k='A' value={item.asesmen} />
+                          <Item k='P' value={item.plan} />
+                        </>
+                      )}
+                    </>
+                  }
                   className='justify-start items-start flex-1'
                   className2='text-left'
                 />
@@ -111,7 +129,7 @@ export function CPPT({ isReport = false, no_rm = '' }: CPPTProps) {
                           setShowDialog(true)
                           console.log('selected cppt item', item)
                           setItem(item)
-                          if (item.cppt.includes('Subjektif')) {
+                          if (item.subjektif != '') {
                             setDialogId('dialog-update-cppt-soap')
                           } else {
                             setDialogId('dialog-update-cppt-sbar')
@@ -130,5 +148,14 @@ export function CPPT({ isReport = false, no_rm = '' }: CPPTProps) {
       </div>
       {/* Content */}
     </LayoutBorderNo>
+  )
+}
+
+const Item = ({ k, value }: { k: string; value: string }) => {
+  return (
+    <span className='flex flex-shrink-0 gap-1'>
+      <strong>{k}</strong> :{' '}
+      <p className='text-xs text-black text-left'>{value}</p>
+    </span>
   )
 }

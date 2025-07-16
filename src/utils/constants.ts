@@ -29,7 +29,10 @@ export const constants = {
       pengantarRawatInap: 'report-pengantar-rawat-inap',
       asesmenDokterIgd: 'report-asesmen-dokter-igd',
       triase: 'report-triase',
+      triasePonek: 'report-triase-ponek',
+      asesmenAwalMedisPonek: 'asesmen-awal-medis-ponek',
       lembarKonsul: 'report-lembar-konsul',
+      pelaksanaanKeperawatan : 'pelaksanaan-keperawatan'
     },
   },
   message: {

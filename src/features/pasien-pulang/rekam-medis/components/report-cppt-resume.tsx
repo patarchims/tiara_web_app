@@ -25,9 +25,6 @@ export function CPPTResume({
   noreg = '',
   no = '',
 }: CPPTResumeProps) {
-  // const { setDialogId, setShowDialog, setItem } = useGlobalStore(
-  //   (state) => state
-  // )
   const { pasien } = usePasienStore((state) => state)
   const { user } = useAuthStore((state) => state)
 
@@ -46,7 +43,7 @@ export function CPPTResume({
       {/* Content */}
       <div className='p-2'>
         <h1 className='text-center text-black font-semibold mb-4'>
-          CATATAN PERKEMBANGAN PASIEN TERINTEGRASI
+          CATATAN PERKEMBANGAN PASIEN TERINTEGRASI SOAP
         </h1>
 
         {/* Informasi Pasien */}
@@ -81,9 +78,6 @@ export function CPPTResume({
               <SimpleColumn head name='Action' isLast className='w-[100px]' />
             )}
           </div>
-          {/* Header */}
-
-          {/* Body */}
 
           {result.cppt.length > 0 &&
             result.cppt.map((item) => (
@@ -94,7 +88,25 @@ export function CPPTResume({
                   className='flex-[0.5]'
                 />
                 <SimpleColumn
-                  name={item.cppt}
+                  isChild={
+                    <>
+                      {item.situation != '' ? (
+                        <>
+                          <Item k='S' value={item.situation} />
+                          <Item k='B' value={item.background} />
+                          <Item k='A' value={item.asesmen} />
+                          <Item k='R' value={item.recommendation} />
+                        </>
+                      ) : (
+                        <>
+                          <Item k='S' value={item.subjektif} />
+                          <Item k='O' value={item.objektif} />
+                          <Item k='A' value={item.asesmen} />
+                          <Item k='P' value={item.plan} />
+                        </>
+                      )}
+                    </>
+                  }
                   className='justify-start items-start flex-1'
                   className2='text-left'
                 />
@@ -108,27 +120,6 @@ export function CPPTResume({
                   isLast={isReport || pasien?.bagian !== user?.bagian}
                   className='flex-[0.5]'
                 />
-                {/* {!isReport && pasien?.bagian === user?.bagian && (
-                  <SimpleColumn
-                    isChild={
-                      <Edit
-                        className='hover:cursor-pointer'
-                        onClick={() => {
-                          setShowDialog(true)
-                          console.log('selected cppt item', item)
-                          setItem(item)
-                          if (item.cppt.includes('Subjektif')) {
-                            setDialogId('dialog-update-cppt-soap')
-                          } else {
-                            setDialogId('dialog-update-cppt-sbar')
-                          }
-                        }}
-                      />
-                    }
-                    isLast
-                    className='w-[100px]'
-                  />
-                )} */}
               </div>
             ))}
           {/* Body */}
@@ -136,5 +127,14 @@ export function CPPTResume({
       </div>
       {/* Content */}
     </LayoutBorderNo>
+  )
+}
+
+const Item = ({ k, value }: { k: string; value: string }) => {
+  return (
+    <span className='flex flex-shrink-0 gap-1'>
+      <strong>{k}</strong> :{' '}
+      <p className='text-xs text-black text-left'>{value}</p>
+    </span>
   )
 }
