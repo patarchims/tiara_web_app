@@ -2,6 +2,8 @@ import { ClipboardPlus, File, LayoutDashboard, Users } from 'lucide-react'
 
 import { match } from 'ts-pattern'
 
+import { constants } from '@/utils/constants'
+
 import { Button } from './ui/button'
 
 interface SidebarProp {
@@ -35,6 +37,7 @@ export default function Sidebar({ index, setIndex, menu }: SidebarProp) {
           </Button>
         ))}
       </div>
+      <p className='text-white text-xs'>{constants.version}</p>
     </section>
   )
 }

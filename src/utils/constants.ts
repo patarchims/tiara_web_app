@@ -32,11 +32,12 @@ export const constants = {
       triasePonek: 'report-triase-ponek',
       asesmenAwalMedisPonek: 'asesmen-awal-medis-ponek',
       lembarKonsul: 'report-lembar-konsul',
-      pelaksanaanKeperawatan : 'pelaksanaan-keperawatan'
+      pelaksanaanKeperawatan: 'pelaksanaan-keperawatan',
     },
   },
   message: {
     loading: 'Sedang memuat data, mohon tunggu sebentar.',
     error: 'Terjadi kesalahan!',
   },
+  version: 'v0.0.1',
 }

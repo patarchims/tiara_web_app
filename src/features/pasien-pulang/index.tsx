@@ -21,7 +21,7 @@ export default function PasienPulang() {
 
   return (
     <>
-      <div className='flex gap-4'>
+      <form className='flex gap-4' onSubmit={searchPasien}>
         <Input
           className='w-full mb-4'
           placeholder='Cari Nomor Rekam Medis'
@@ -30,11 +30,11 @@ export default function PasienPulang() {
         />
         <Button
           className='w-[100px] bg-white text-black hover:bg-white/80'
-          onClick={searchPasien}
+          type='button'
         >
           Cari
         </Button>
-      </div>
+      </form>
 
       <div className='grid grid-cols-3 gap-4'>
         {status == 'loading' && <Skeleton className='h-[50px]' />}
@@ -42,8 +42,14 @@ export default function PasienPulang() {
           <div
             className='p-4 bg-white rounded-md shadow-md hover:cursor-pointer hover:-translate-y-1'
             onClick={() => {
-              const p = data[0] as Partial<Pasien> & { nama: string }
+              const p = data[0] as Partial<Pasien> & {
+                nama: string
+                noreg: string
+              }
               p.nama_pasien = p.nama
+              p.no_reg = p.noreg
+
+              console.log('p ', p)
               setPasien(p as Pasien)
               setDialogId('dialog-rekam-medis')
             }}

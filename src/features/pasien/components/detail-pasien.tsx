@@ -14,6 +14,7 @@ import { useAuthStore } from '@/store/auth.store'
 import { useGlobalStore } from '@/store/global.store'
 import { usePasienStore } from '@/store/pasien.store'
 import { Pasien } from '@/type'
+import { constants } from '@/utils/constants'
 
 import { AsesmenKeperawatanBayi } from '../asesmen-keperawatan-bayi'
 import { CPPT } from '../cppt'
@@ -89,6 +90,9 @@ export function DetailPasien() {
                     </AvatarFallback>
                   </Avatar>
                   <h3 className='py-2'>{pasien?.nama_pasien}</h3>
+                  <p className='text-xs'>{pasien?.no_rm}</p>
+                  <p className='text-xs'>{pasien?.no_reg}</p>
+                  <p className='text-xs'>{constants.version}</p>
                 </div>
                 {/* Profile Pasien */}
                 <div className='h-[350px] w-full p-2 overflow-x-scroll'>

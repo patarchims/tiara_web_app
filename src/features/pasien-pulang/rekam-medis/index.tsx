@@ -133,6 +133,9 @@ export default function RekamMedis() {
                     </AvatarFallback>
                   </Avatar>
                   <h3 className='py-2'>{pasien?.nama_pasien}</h3>
+                  <p className='text-xs'>{pasien?.no_rm}</p>
+                  <p className='text-xs'>{pasien?.no_reg}</p>
+                  <p className='text-xs'>{constants.version}</p>
                 </div>
                 {/* Profile Pasien */}
                 <div className='px-1 w-full'>

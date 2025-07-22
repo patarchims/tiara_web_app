@@ -20,8 +20,9 @@ export default function usePasienPulang() {
   const [empty, setEmpty] = useState(false)
   const [status, setStatus] = useState<'loading' | ''>('')
 
-  const searchPasien = async () => {
+  const searchPasien = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
+      e.preventDefault()
       setData([])
       setEmpty(false)
       setStatus('loading')
